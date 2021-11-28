@@ -1,4 +1,5 @@
 import pygame
+from TileParticle import Particle
 
 class FloorTile:
 
@@ -14,12 +15,14 @@ class FloorTile:
             self.floor = pygame.image.load("data/assets/sprites/floor/blue_floor.png").convert_alpha()
 
         self.purple_tile = pygame.image.load("data/assets/sprites/floor/purple_floor.png").convert_alpha()
+        self.corruption_particles = Particle(self.screen, self.x, self.y, self.purple_tile)
         self.has_collided = False
         self.rect = self.floor.get_rect(x = self.x, y = self.y)
     
     def draw(self):
         if self.has_collided:
             self.screen.blit(self.purple_tile, (self.x, self.y))
+            self.corruption_particles.emit_particles()
         else:
             self.screen.blit(self.floor, (self.x, self.y))
 
