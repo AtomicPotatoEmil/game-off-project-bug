@@ -6,7 +6,7 @@ pygame.display.set_caption("Bugged In")
 
 clock = pygame.time.Clock()
 
-level = [Level1(screen, 3)]
+level = [Level1(screen, 2, 0.5)]
 level_index = 0
 
 playing = True

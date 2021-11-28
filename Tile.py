@@ -17,10 +17,11 @@ class FloorTile:
         self.purple_tile = pygame.image.load("data/assets/sprites/floor/purple_floor.png").convert_alpha()
         self.corruption_particles = Particle(self.screen, self.x, self.y, self.purple_tile)
         self.has_collided = False
+        self.cleansed = False
         self.rect = self.floor.get_rect(x = self.x, y = self.y)
     
     def draw(self):
-        if self.has_collided:
+        if self.has_collided and not self.cleansed:
             self.screen.blit(self.purple_tile, (self.x, self.y))
             self.corruption_particles.emit_particles()
         else:
@@ -46,3 +47,18 @@ class WallTile:
     
     def draw(self):
         self.screen.blit(self.wall, (self.x, self.y))
+    
+
+class HazardTile:
+
+    def __init__(self, screen, x, y):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.img = pygame.image.load("data/assets/sprites/floor/hazard.png").convert_alpha()
+        self.rect = self.img.get_rect(x = self.x, y = self.y)
+        self.hazard_particles = Particle(self.screen, self.x, self.y, self.img)
+    
+    def draw(self):
+        self.hazard_particles.emit_particles()
+    

@@ -1,12 +1,14 @@
 import pygame
-from Tile import FloorTile, WallTile
+from Tile import FloorTile, WallTile, HazardTile
 from Player import Player
+from Enemy import Enemy
 
 class Level1:
 
-    def __init__(self, screen, color_id):
+    def __init__(self, screen, color_id, enemy_speed):
         self.screen = screen
         self.color_id = color_id
+        self.enemy_speed = enemy_speed
         self.level_changed = False
         self.game_quit = False
 
@@ -35,6 +37,7 @@ class Level1:
 
         self.floor_tiles = []
         self.wall_tiles = []
+        self.hazard_tiles = []
 
         for y in range(len(self.level_template)):
             for x in range(len(self.level_template[y])):
@@ -44,6 +47,12 @@ class Level1:
                     self.wall_tiles.append(WallTile(self.screen, self.color_id, x * 35, y * 35))
         
         self.player_instance = [Player(self.screen, 70, 70, 3)]
+        self.enemy_instance = []
+
+        self.enemy_spawn_timer = 5
+        self.spawn_time = 1
+        self.enemy_path = []
+
 
     def run(self, dt):
         for event in pygame.event.get():
@@ -80,13 +89,45 @@ class Level1:
                             player.can_go_right = True
                             player.can_go_up = True
         
+        if len(self.enemy_instance) == 0:
+            self.enemy_spawn_timer -= 1 * dt
+        
+        if self.enemy_spawn_timer <= 0:
+            self.enemy_instance.append(Enemy(self.screen, 70, 35, self.enemy_speed))
+            self.enemy_spawn_timer = self.spawn_time
+        
         self.screen.fill((0, 0, 0))
         
         for tile in self.floor_tiles:
             for player in self.player_instance:
                 if tile.rect.colliderect(player.rect):
+                    if tile.has_collided == False:
+                        self.enemy_path.append(tile.x)
+                        self.enemy_path.append(tile.y)
+                        print(self.enemy_path)
                     tile.has_collided = True
+            for enemy in self.enemy_instance:
+                if tile.rect.colliderect(enemy.rect):
+                    tile.cleansed = True
             tile.draw()
+        
+        for tile in self.hazard_tiles:
+            for player in self.player_instance:
+                if tile.rect.colliderect(player.rect):
+                    self.reset_level(70, 70)
+            tile.draw()
+        
+        for enemy in self.enemy_instance:
+            if len(self.enemy_path) > 0:
+                if enemy.is_moving:
+                    self.hazard_tiles.append(HazardTile(self.screen, self.enemy_path[0], self.enemy_path[1]))
+                    enemy.x = self.enemy_path.pop(0)
+                    enemy.y = self.enemy_path.pop(0)
+                    enemy.is_moving = False
+            for player in self.player_instance:
+                if player.rect.colliderect(enemy.rect):
+                    self.reset_level(70, 70)
+            enemy.update(dt)
         
         for player in self.player_instance:
             player.update()
@@ -95,15 +136,24 @@ class Level1:
             for player in self.player_instance:
                 if player.right_ray.colliderect(tile.rect):
                     player.can_go_right = False
-                    print("hit")
                 if player.left_ray.colliderect(tile.rect):
                     player.can_go_left = False
-                    print("hit")
                 if player.upper_ray.colliderect(tile.rect):
                     player.can_go_up = False
-                    print("hit")
                 if player.bottom_ray.colliderect(tile.rect):
                     player.can_go_down = False
-                    print("hit")
-            tile.draw()    
+            tile.draw()
+        
+    def reset_level(self, start_x, start_y):
+        for player in self.player_instance:
+            player.x = start_x
+            player.y = start_y
+
+        self.hazard_tiles.clear()
+        self.enemy_path.clear()
+        self.enemy_instance.clear()
+        for tile in self.floor_tiles:
+            tile.has_collided = False
+            tile.cleansed = False
+        
         
