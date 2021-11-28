@@ -2,7 +2,7 @@ import pygame
 
 class Player:
 
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, direction_value):
         self.screen = screen
         self.x = x
         self.y = y
@@ -10,13 +10,18 @@ class Player:
         self.player_img_right = pygame.transform.rotate(self.player_img_up, -90)
         self.player_img_down = pygame.transform.rotate(self.player_img_up, 180)
         self.player_img_left = pygame.transform.rotate(self.player_img_up, 90)
-        self.direction_value = 1
+        self.direction_value = direction_value
         self.current_direction = self.player_img_up
 
         self.can_go_right = True
         self.can_go_left = True
         self.can_go_up = True
         self.can_go_down = True
+
+        self.right_ray = pygame.Rect(self.x + 35, self.y, 35, 35)
+        self.left_ray = pygame.Rect(self.x - 35, self.y, 35, 35)
+        self.upper_ray = pygame.Rect(self.x, self.y - 35, 35, 35)
+        self.bottom_ray = pygame.Rect(self.x, self.y + 35, 35, 35)
 
         self.rect = self.current_direction.get_rect(x = self.x, y = self.y)
     
@@ -31,3 +36,8 @@ class Player:
             self.current_direction = self.player_img_left
         self.screen.blit(self.current_direction, (self.x, self.y))
         self.rect = self.current_direction.get_rect(x = self.x, y = self.y)
+
+        self.right_ray = pygame.Rect(self.x + 35, self.y, 35, 35)
+        self.left_ray = pygame.Rect(self.x - 35, self.y, 35, 35)
+        self.upper_ray = pygame.Rect(self.x, self.y - 35, 35, 35)
+        self.bottom_ray = pygame.Rect(self.x, self.y + 35, 35, 35)

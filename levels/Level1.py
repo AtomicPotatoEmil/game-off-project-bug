@@ -12,24 +12,24 @@ class Level1:
 
         self.level_template = (
             (2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+            (2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+            (2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
             (2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
         )
 
@@ -41,9 +41,9 @@ class Level1:
                 if self.level_template[y][x] == 1:
                     self.floor_tiles.append(FloorTile(self.screen, self.color_id, x * 35, y * 35))
                 if self.level_template[y][x] == 2:
-                    self.floor_tiles.append(WallTile(self.screen, self.color_id, x * 35, y * 35))
+                    self.wall_tiles.append(WallTile(self.screen, self.color_id, x * 35, y * 35))
         
-        self.player_instance = [Player(self.screen, 35, 35)]
+        self.player_instance = [Player(self.screen, 70, 70, 3)]
 
     def run(self, dt):
         for event in pygame.event.get():
@@ -51,18 +51,34 @@ class Level1:
                 self.game_quit = True
             if event.type == pygame.KEYDOWN:
                 for player in self.player_instance:
-                    if event.key == pygame.K_RIGHT:
-                        player.x += 35
-                        player.direction_value = 2
-                    if event.key == pygame.K_LEFT:
-                        player.x -= 35
-                        player.direction_value = 4
-                    if event.key == pygame.K_UP:
-                        player.y -= 35
-                        player.direction_value = 1
-                    if event.key == pygame.K_DOWN:
-                        player.y += 35
-                        player.direction_value = 3
+                    if player.can_go_right:
+                        if event.key == pygame.K_RIGHT:
+                            player.x += 35
+                            player.direction_value = 2
+                            player.can_go_left = True
+                            player.can_go_down = True
+                            player.can_go_up = True
+                    if player.can_go_left:
+                        if event.key == pygame.K_LEFT:
+                            player.x -= 35
+                            player.direction_value = 4
+                            player.can_go_right = True
+                            player.can_go_down = True
+                            player.can_go_up = True
+                    if player.can_go_up:
+                        if event.key == pygame.K_UP:
+                            player.y -= 35
+                            player.direction_value = 1
+                            player.can_go_left = True
+                            player.can_go_down = True
+                            player.can_go_right = True
+                    if player.can_go_down:
+                        if event.key == pygame.K_DOWN:
+                            player.y += 35
+                            player.direction_value = 3
+                            player.can_go_left = True
+                            player.can_go_right = True
+                            player.can_go_up = True
         
         self.screen.fill((0, 0, 0))
         
@@ -72,8 +88,22 @@ class Level1:
                     tile.has_collided = True
             tile.draw()
         
-        for tile in self.wall_tiles:
-            tile.draw()
-        
         for player in self.player_instance:
             player.update()
+        
+        for tile in self.wall_tiles:
+            for player in self.player_instance:
+                if player.right_ray.colliderect(tile.rect):
+                    player.can_go_right = False
+                    print("hit")
+                if player.left_ray.colliderect(tile.rect):
+                    player.can_go_left = False
+                    print("hit")
+                if player.upper_ray.colliderect(tile.rect):
+                    player.can_go_up = False
+                    print("hit")
+                if player.bottom_ray.colliderect(tile.rect):
+                    player.can_go_down = False
+                    print("hit")
+            tile.draw()    
+        

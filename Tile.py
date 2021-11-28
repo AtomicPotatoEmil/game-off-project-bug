@@ -6,7 +6,6 @@ class FloorTile:
         self.screen = screen
         self.x = x
         self.y = y
-
         if tile_id == 1:
             self.floor = pygame.image.load("data/assets/sprites/floor/red_floor.png").convert_alpha()
         elif tile_id == 2:
@@ -16,7 +15,6 @@ class FloorTile:
 
         self.purple_tile = pygame.image.load("data/assets/sprites/floor/purple_floor.png").convert_alpha()
         self.has_collided = False
-
         self.rect = self.floor.get_rect(x = self.x, y = self.y)
     
     def draw(self):
