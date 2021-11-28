@@ -148,6 +148,10 @@ class Level1:
         for player in self.player_instance:
             player.x = start_x
             player.y = start_y
+            player.can_go_right = True
+            player.can_go_left = True
+            player.can_go_down = True
+            player.can_go_up = True
 
         self.hazard_tiles.clear()
         self.enemy_path.clear()
