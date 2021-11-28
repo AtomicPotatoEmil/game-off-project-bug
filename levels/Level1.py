@@ -53,12 +53,16 @@ class Level1:
                 for player in self.player_instance:
                     if event.key == pygame.K_RIGHT:
                         player.x += 35
+                        player.direction_value = 2
                     if event.key == pygame.K_LEFT:
                         player.x -= 35
+                        player.direction_value = 4
                     if event.key == pygame.K_UP:
                         player.y -= 35
+                        player.direction_value = 1
                     if event.key == pygame.K_DOWN:
                         player.y += 35
+                        player.direction_value = 3
         
         self.screen.fill((0, 0, 0))
         
