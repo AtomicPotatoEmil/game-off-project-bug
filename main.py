@@ -1,6 +1,7 @@
 import pygame
 from Level import Level
 import LevelMatrices as lm
+from Screen import StartScreen, WinScreen
 
 pygame.init()
 
@@ -11,6 +12,7 @@ clock = pygame.time.Clock()
 
 
 level = [
+    StartScreen(screen),
     Level(screen, lm.level1, 1, 70, 70, 3, 70, 35, 0.3, 5, 945, 595),
     Level(screen, lm.level2, 2, 945, 595, 1, 945, 630, 0.3, 5, 35, 35),
     Level(screen, lm.level3, 3, 70, 70, 3, 70, 35, 0.3, 5, 630, 140),
@@ -20,7 +22,8 @@ level = [
     Level(screen, lm.level7, 1, 945, 560, 1, 945, 595, 0.3, 5, 805, 560),
     Level(screen, lm.level8, 2, 945, 595, 4, 980, 595, 0.2, 5, 35, 595),
     Level(screen, lm.level9, 3, 70, 595, 1, 70, 630, 0.3, 5, 490, 35),
-    Level(screen, lm.level10, 1, 490, 70, 3, 490, 35, 0.3, 5, 490, 595)
+    Level(screen, lm.level10, 1, 490, 70, 3, 490, 35, 0.3, 5, 490, 595),
+    WinScreen(screen)
     ]
 level_index = 0
 
