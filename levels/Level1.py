@@ -1,11 +1,11 @@
 import pygame
-from Tile import FloorTile, WallTile, HazardTile
+from Tile import FloorTile, WallTile, HazardTile, EnemySpawnTile, ExitTile
 from Player import Player
 from Enemy import Enemy
 
 class Level1:
 
-    def __init__(self, screen, color_id, enemy_speed):
+    def __init__(self, screen, color_id, player_x, player_y, enemy_x, enemy_y, enemy_speed, enemy_spawn_time, exit_x, exit_y):
         self.screen = screen
         self.color_id = color_id
         self.enemy_speed = enemy_speed
@@ -46,12 +46,15 @@ class Level1:
                 if self.level_template[y][x] == 2:
                     self.wall_tiles.append(WallTile(self.screen, self.color_id, x * 35, y * 35))
         
-        self.player_instance = [Player(self.screen, 70, 70, 3)]
+        self.player_instance = [Player(self.screen, player_x, player_y, 3)]
         self.enemy_instance = []
 
-        self.enemy_spawn_timer = 5
+        self.enemy_spawn_timer = enemy_spawn_time
         self.spawn_time = 1
         self.enemy_path = []
+        self.enemy_spawn_tile = EnemySpawnTile(self.screen, 70, 35)
+
+        self.exit_tile = ExitTile(self.screen, exit_x, exit_y)
 
 
     def run(self, dt):
@@ -93,7 +96,7 @@ class Level1:
             self.enemy_spawn_timer -= 1 * dt
         
         if self.enemy_spawn_timer <= 0:
-            self.enemy_instance.append(Enemy(self.screen, 70, 35, self.enemy_speed))
+            self.enemy_instance.append(Enemy(self.screen, self.enemy_spawn_tile.x, self.enemy_spawn_tile.y, self.enemy_speed))
             self.enemy_spawn_timer = self.spawn_time
         
         self.screen.fill((0, 0, 0))
@@ -111,11 +114,15 @@ class Level1:
                     tile.cleansed = True
             tile.draw()
         
+        self.enemy_spawn_tile.draw()
+        self.exit_tile.draw()
+        
         for tile in self.hazard_tiles:
             for player in self.player_instance:
                 if tile.rect.colliderect(player.rect):
                     self.reset_level(70, 70)
             tile.draw()
+        
         
         for enemy in self.enemy_instance:
             if len(self.enemy_path) > 0:
@@ -131,6 +138,9 @@ class Level1:
         
         for player in self.player_instance:
             player.update()
+            if player.rect.colliderect(self.exit_tile.rect):
+                self.level_changed = True
+                print("hit")
         
         for tile in self.wall_tiles:
             for player in self.player_instance:

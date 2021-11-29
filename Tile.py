@@ -61,4 +61,39 @@ class HazardTile:
     
     def draw(self):
         self.hazard_particles.emit_particles()
+
+class EnemySpawnTile:
+
+    def __init__(self, screen, x, y):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.img = pygame.image.load("data/assets/sprites/floor/enemy_spawn.png").convert_alpha()
+    
+    def draw(self):
+        self.screen.blit(self.img, (self.x, self.y))
+
+
+class ExitTile:
+
+    def __init__(self, screen, x, y):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.img = pygame.image.load("data/assets/sprites/floor/exit.png").convert_alpha()
+        self.particles = Particle(self.screen, self.x, self.y, self.img)
+        self.particles2 = Particle(self.screen, self.x + 35, self.y, self.img)
+        self.particles3 = Particle(self.screen, self.x, self.y  + 35, self.img)
+        self.particles4 = Particle(self.screen, self.x + 35, self.y  + 35, self.img)
+        self.rect = pygame.Rect(self.x, self.y, 70, 70)
+    
+    def draw(self):
+        self.screen.blit(self.img, (self.x, self.y))
+        self.screen.blit(self.img, (self.x + 35, self.y))
+        self.screen.blit(self.img, (self.x, self.y + 35))
+        self.screen.blit(self.img, (self.x + 35, self.y + 35))
+        self.particles.emit_particles()
+        self.particles2.emit_particles()
+        self.particles3.emit_particles()
+        self.particles4.emit_particles()
     
