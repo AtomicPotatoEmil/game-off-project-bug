@@ -3,7 +3,7 @@ from Tile import FloorTile, WallTile, HazardTile, EnemySpawnTile, ExitTile
 from Player import Player
 from Enemy import Enemy
 
-class Level1:
+class Level2:
 
     def __init__(self, screen, color_id, player_x, player_y, enemy_x, enemy_y, enemy_speed, enemy_spawn_time, exit_x, exit_y):
         self.screen = screen

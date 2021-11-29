@@ -1,5 +1,6 @@
 import pygame
 from levels.Level1 import Level1
+from levels.Level2 import Level2
 
 pygame.init()
 
@@ -8,10 +9,14 @@ pygame.display.set_caption("Bugged In")
 
 clock = pygame.time.Clock()
 
-level = [Level1(screen, 2, 70, 70, 70, 35, 0.3, 5, 945, 595)]
+level = [
+    Level1(screen, 1, 70, 70, 70, 35, 0.3, 5, 945, 595),
+    Level2(screen, 2, 70, 70, 70, 35, 0.3, 5, 945, 595)
+    ]
 level_index = 0
 
 pygame.mixer.music.load("data/assets/music/bugsong.mp3")
+pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.play(-1)
 
 playing = True
