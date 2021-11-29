@@ -18,7 +18,9 @@ level = [
     Level(screen, lm.level5, 2, 455, 315, 1, 455, 350, 0.3, 5, 35, 35),
     Level(screen, lm.level6, 3, 70, 70, 3, 70, 35, 0.3, 5, 910, 560),
     Level(screen, lm.level7, 1, 945, 560, 1, 945, 595, 0.3, 5, 805, 560),
-    Level(screen, lm.level8, 2, 945, 595, 4, 980, 595, 0.3, 5, 35, 595)
+    Level(screen, lm.level8, 2, 945, 595, 4, 980, 595, 0.2, 5, 35, 595),
+    Level(screen, lm.level9, 3, 70, 595, 1, 70, 630, 0.3, 5, 490, 35),
+    Level(screen, lm.level10, 1, 490, 70, 3, 490, 35, 0.3, 5, 490, 595)
     ]
 level_index = 0
 
@@ -33,7 +35,7 @@ while playing:
     dt = clock.tick() / 1000
 
     level[level_index].run(dt)
-    if level[level_index].level_changed == True:
+    if level[level_index].level_changed:
         level_index += 1
     if level[level_index].game_quit:
         playing = False

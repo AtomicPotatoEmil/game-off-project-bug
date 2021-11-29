@@ -1,4 +1,5 @@
 import pygame
+from pygame.constants import K_w
 from Tile import FloorTile, WallTile, HazardTile, EnemySpawnTile, ExitTile
 from Player import Player
 from Enemy import Enemy
@@ -45,28 +46,28 @@ class Level:
             if event.type == pygame.KEYDOWN:
                 for player in self.player_instance:
                     if player.can_go_right:
-                        if event.key == pygame.K_RIGHT:
+                        if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                             player.x += 35
                             player.direction_value = 2
                             player.can_go_left = True
                             player.can_go_down = True
                             player.can_go_up = True
                     if player.can_go_left:
-                        if event.key == pygame.K_LEFT:
+                        if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                             player.x -= 35
                             player.direction_value = 4
                             player.can_go_right = True
                             player.can_go_down = True
                             player.can_go_up = True
                     if player.can_go_up:
-                        if event.key == pygame.K_UP:
+                        if event.key == pygame.K_UP or event.key == pygame.K_w:
                             player.y -= 35
                             player.direction_value = 1
                             player.can_go_left = True
                             player.can_go_down = True
                             player.can_go_right = True
                     if player.can_go_down:
-                        if event.key == pygame.K_DOWN:
+                        if event.key == pygame.K_DOWN or event.key == pygame.K_s:
                             player.y += 35
                             player.direction_value = 3
                             player.can_go_left = True
