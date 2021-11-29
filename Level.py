@@ -3,9 +3,9 @@ from Tile import FloorTile, WallTile, HazardTile, EnemySpawnTile, ExitTile
 from Player import Player
 from Enemy import Enemy
 
-class Level2:
+class Level:
 
-    def __init__(self, screen, color_id, player_x, player_y, enemy_x, enemy_y, enemy_speed, enemy_spawn_time, exit_x, exit_y):
+    def __init__(self, screen, level_matrix, color_id, player_x, player_y, player_direction, enemy_x, enemy_y, enemy_speed, enemy_spawn_time, exit_x, exit_y):
         self.screen = screen
         self.color_id = color_id
         self.player_start_x = player_x
@@ -14,28 +14,7 @@ class Level2:
         self.level_changed = False
         self.game_quit = False
 
-        self.level_template = (
-            (2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2),
-            (2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2),
-            (2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
-        )
+        self.level_template = level_matrix
 
         self.floor_tiles = []
         self.wall_tiles = []
@@ -48,13 +27,13 @@ class Level2:
                 if self.level_template[y][x] == 2:
                     self.wall_tiles.append(WallTile(self.screen, self.color_id, x * 35, y * 35))
         
-        self.player_instance = [Player(self.screen, player_x, player_y, 3)]
+        self.player_instance = [Player(self.screen, player_x, player_y, player_direction)]
         self.enemy_instance = []
 
         self.enemy_spawn_timer = enemy_spawn_time
         self.spawn_time = 1
         self.enemy_path = []
-        self.enemy_spawn_tile = EnemySpawnTile(self.screen, 70, 35)
+        self.enemy_spawn_tile = EnemySpawnTile(self.screen, enemy_x, enemy_y)
 
         self.exit_tile = ExitTile(self.screen, exit_x, exit_y)
 
